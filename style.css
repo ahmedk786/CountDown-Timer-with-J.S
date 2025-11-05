@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -12,164 +13,124 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(135deg, #007bff, #ffeb3b, #ff4081, #00e5ff);
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
   background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
+  animation: gradientShift 20s ease infinite;
   color: #fff;
-  overflow-x: hidden;
   padding: 10px;
 }
 
+/* ===== TITLE ===== */
 h1 {
-  margin-bottom: 15px;
-  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-align: center;
+  margin-bottom: 20px;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  animation: floatTitle 6s ease-in-out infinite;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  animation: floatTitle 5s ease-in-out infinite alternate;
 }
 
+/* ===== COUNTDOWN CONTAINER ===== */
 .countdown {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 5px;
+  gap: 15px;
   width: 100%;
   max-width: 700px;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* ===== TIMER BOX ===== */
 .timer {
-  position: relative;
-  flex: 1 1 80px; /* flexible width */
-  max-width: 180px;
+  flex: 1 1 120px;
   min-width: 80px;
+  max-width: 160px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #fdfbfb, #ebedee);
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),
-              inset 1px 1px 5px rgba(255, 255, 255, 0.5);
-  overflow: hidden;
-  transition: all 0.2s ease;
-  margin: 3px;
+  padding: 15px 10px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .timer:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
+/* ===== TIMER GLOW EFFECT ===== */
 .timer::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    #ff4081,
-    #ffeb3b,
-    #00e5ff,
-    #7b61ff,
-    #ff4081
-  );
-  animation: rotateGlow 15s linear infinite;
-  opacity: 0.1;
+  inset: -10px;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c, #1f4037, #99f2c8);
+  filter: blur(20px);
+  opacity: 0.3;
+  border-radius: 25px;
   z-index: 0;
 }
 
-.timer::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  border-radius: 10px;
-  z-index: 1;
-}
-
+/* ===== TIMER CONTENT ===== */
 .timer .time {
   font-size: clamp(1.2rem, 5vw, 2rem);
   font-weight: 700;
   color: #fff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  z-index: 2;
-  animation: slowGlow 4s ease-in-out infinite;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  z-index: 1;
 }
 
 .timer .label {
-  margin-top: 3px;
-  font-size: clamp(0.6rem, 2vw, 0.8rem);
-  font-weight: 600;
+  margin-top: 5px;
+  font-size: clamp(0.6rem, 2vw, 0.9rem);
+  font-weight: 500;
+  text-transform: uppercase;
   color: #fff;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* ===== KEYFRAMES ===== */
 @keyframes floatTitle {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  25% { transform: translateY(-3px) translateX(1px); }
-  50% { transform: translateY(2px) translateX(-1px); }
-  75% { transform: translateY(-2px) translateX(1px); }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
 
-@keyframes slowGlow {
-  0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,0.5); transform: scale(1); }
-  50% { text-shadow: 0 0 8px rgba(255,255,255,0.7); transform: scale(1.01); }
-}
-
-@keyframes gradientFlow {
+@keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-@keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* ===== RESPONSIVE ===== */
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== MOBILE OVERRIDES ===== */
+/* Mobile */
 @media (max-width: 480px) {
   h1 {
-    font-size: clamp(1.2rem, 6vw, 1.5rem); /* smaller height */
-    margin-bottom: 8px; /* reduce spacing */
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin-bottom: 15px;
   }
-
+  
   .countdown {
-    gap: 5px;
-    padding: 5px;
-    max-width: 100%;
+    gap: 10px;
   }
 
   .timer {
     flex: 1 1 70px;
     max-width: 100px;
-    min-width: 70px;
-    padding: 6px 8px;
+    padding: 10px 8px;
   }
 
   .timer .time {
-    font-size: clamp(1rem, 5vw, 1.5rem);
+    font-size: clamp(1rem, 5vw, 1.4rem);
   }
 
   .timer .label {
@@ -177,23 +138,23 @@ h1 {
   }
 }
 
-/* ===== TABLET OVERRIDES ===== */
+/* Tablet */
 @media (max-width: 768px) {
   h1 {
-    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    font-size: clamp(1.4rem, 5vw, 2rem);
   }
 
   .timer {
-    max-width: 140px;
-    min-width: 100px;
-    padding: 10px 12px;
+    flex: 1 1 90px;
+    max-width: 120px;
+    padding: 12px 10px;
   }
 
   .timer .time {
-    font-size: clamp(1.2rem, 5vw, 2rem);
+    font-size: clamp(1.1rem, 4vw, 1.6rem);
   }
 
   .timer .label {
-    font-size: clamp(0.6rem, 2vw, 0.8rem);
+    font-size: clamp(0.5rem, 2vw, 0.8rem);
   }
 }
