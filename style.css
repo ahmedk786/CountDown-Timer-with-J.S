@@ -16,27 +16,31 @@ body {
   animation: gradientFlow 15s ease infinite;
   color: #fff;
   overflow: hidden;
+  padding: 20px;
 }
 
 h1 {
-  margin-bottom: 40px;
-  font-size: 3.5rem;
+  margin-bottom: 30px;
+  font-size: 3rem;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   color: #fff;
-  text-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
   animation: floatTitle 6s ease-in-out infinite;
+  text-align: center;
 }
 
 .countdown {
   display: flex;
-  gap: 35px;
-  padding: 40px 60px;
-  border-radius: 40px;
+  gap: 25px;
+  padding: 30px 40px;
+  border-radius: 30px;
   background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(25px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: fadeUp 1.5s ease forwards;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .timer {
@@ -46,18 +50,17 @@ h1 {
   align-items: center;
   justify-content: center;
   background: linear-gradient(145deg, #fdfbfb, #ebedee);
-  padding: 35px 50px;
-  border-radius: 25px;
-  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25),
-              inset 3px 3px 8px rgba(255, 255, 255, 0.5);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25),
+              inset 2px 2px 8px rgba(255, 255, 255, 0.5);
   overflow: hidden;
-  transition: all 0.4s ease;
-  animation: softFloat 6s ease-in-out infinite;
+  transition: all 0.3s ease;
 }
 
 .timer:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 10px 35px rgba(255, 255, 255, 0.4);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
 }
 
 .timer::before {
@@ -76,7 +79,7 @@ h1 {
     #ff4081
   );
   animation: rotateGlow 15s linear infinite;
-  opacity: 0.3;
+  opacity: 0.15;
   z-index: 0;
 }
 
@@ -85,24 +88,24 @@ h1 {
   position: absolute;
   inset: 3px;
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(25px);
-  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
   z-index: 1;
 }
 
 .timer .time {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: #fff;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
-               0 0 40px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+               0 0 20px rgba(255, 255, 255, 0.3);
   z-index: 2;
   animation: slowGlow 4s ease-in-out infinite;
 }
 
 .timer .label {
-  margin-top: 12px;
-  font-size: 1.1rem;
+  margin-top: 8px;
+  font-size: 1rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: 1px;
@@ -112,27 +115,22 @@ h1 {
 
 @keyframes floatTitle {
   0%, 100% { transform: translateY(0) translateX(0); }
-  25% { transform: translateY(-8px) translateX(5px); }
-  50% { transform: translateY(4px) translateX(-5px); }
-  75% { transform: translateY(-5px) translateX(3px); }
+  25% { transform: translateY(-5px) translateX(3px); }
+  50% { transform: translateY(3px) translateX(-3px); }
+  75% { transform: translateY(-3px) translateX(2px); }
 }
 
 @keyframes slowGlow {
   0%, 100% {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
-                 0 0 40px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.2);
     transform: scale(1);
   }
   50% {
-    text-shadow: 0 0 30px rgba(255, 255, 255, 1),
-                 0 0 50px rgba(255, 255, 255, 0.6);
-    transform: scale(1.04);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                 0 0 35px rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
   }
-}
-
-@keyframes softFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
 }
 
 @keyframes gradientFlow {
@@ -147,28 +145,65 @@ h1 {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .timer {
+    padding: 25px 35px;
+  }
+
+  .timer .time {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 768px) {
   h1 {
     font-size: 2.3rem;
-    text-align: center;
   }
 
   .countdown {
     flex-direction: column;
-    gap: 25px;
-    padding: 25px 30px;
+    gap: 20px;
+    padding: 20px;
   }
 
   .timer {
-    width: 220px;
-    padding: 25px;
+    width: 200px;
+    padding: 20px;
   }
 
   .timer .time {
-    font-size: 3.2rem;
+    font-size: 2.5rem;
+  }
+
+  .timer .label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .timer {
+    width: 160px;
+    padding: 15px;
+  }
+
+  .timer .time {
+    font-size: 2rem;
+  }
+
+  .timer .label {
+    font-size: 0.8rem;
   }
 }
